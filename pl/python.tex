@@ -1,0 +1,136 @@
+\section*{Gniazda w języku Python - moduł socket} \mbox{}\\
+
+\noindent \textbf{Tworzenie gniazd klienckich/serwerowych TCP, IPv4}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+if __name__ == '__main__':
+
+	sockIPv4 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	sockIPv4.close()
+\end{code} \mbox{}\\
+
+\noindent \textbf{Tworzenie gniazd klienckich/serwerowych TCP, IPv6}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+if __name__ == '__main__':
+
+	sockIPv6 = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+	sockIPv6.close()
+\end{code} \mbox{}\\
+
+\noindent \textbf{Tworzenie gniazd klienckich/serwerowych UDP, IPv4}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket 
+
+if __name__ == '__main__':
+
+	sockIPv4 = socket.socket(socket.AF_INET,  socket.SOCK_DGRAM)
+	sockIPv4.close()
+\end{code}\mbox{}\\
+
+\noindent \textbf{Tworzenie gniazd klienckich/serwerowych UDP, IPv6}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket 
+
+if __name__ == '__main__':
+
+	sockIPv6 = socket.socket(socket.AF_INET6,  socket.SOCK_DGRAM)
+	sockIPv6.close()
+\end{code}\mbox{}\\
+
+\newpage
+\noindent \textbf{Gniazdo klienckie TCP, IPv4: nawiązanie połączenia z serwerem}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+if __name__ == "__main__":
+
+    sockIPv4 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sockIPv4.settimeout(5)
+
+    try:
+        sockIPv4.connect(("127.0.0.1", 80))
+    except socket.error as exc:
+        print(f"Wyjatek socket.error: {exc}")
+
+    sockIPv4.close()
+\end{code}\mbox{}\\
+
+
+\noindent \textbf{Gniazdo klienckie TCP, IPv6: nawiązanie połączenia z serwerem}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+if __name__ == "__main__":
+
+    address = socket.getaddrinfo("::1", 80, socket.AF_INET6)
+    sockIPv6 = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+    sockIPv6.settimeout(5)
+
+    try:
+        sockIPv6.connect(address[0][4])
+    except socket.error as exc:
+        print(f"Wyjatek socket.error: {exc}")
+
+    sockIPv6.close()
+\end{code}\mbox{}\\
+
+\newpage
+\noindent \textbf{Gniazdo klienckie TCP, IPv4: komunikacja z serwerem (wysyłanie i odbieranie danych)}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+if __name__ == "__main__":
+
+    sockIPv4 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sockIPv4.settimeout(5)
+
+    try:
+        sockIPv4.connect(("127.0.0.1", 80))
+        sockIPv4.sendall("Hello Server!".encode())	# wysylanie
+        print(sockIPv4.recv(1024).decode())								# odbieranie
+    except socket.error as exc:
+        print(f"Wyjatek socket.error: {exc}")
+
+    sockIPv4.close()
+\end{code}\mbox{}\\
+
+\noindent \textbf{Gniazdo klienckie TCP, IPv6: komunikacja z serwerem (wysyłanie i odbieranie danych)}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+if __name__ == "__main__":
+
+    address = socket.getaddrinfo("::1", 80, socket.AF_INET6)
+    sockIPv6 = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+    sockIPv6.settimeout(5)
+
+    try:
+        sockIPv6.connect(address[0][4])
+        sockIPv6.sendall("Hello Server!".encode())	# wysylanie
+        print(sockIPv6.recv(1024).decode())								# odbieranie
+    except socket.error as exc:
+        print(f"Wyjatek socket.error: {exc}")
+
+    sockIPv6.close()
+\end{code}\mbox{}\\
+
+

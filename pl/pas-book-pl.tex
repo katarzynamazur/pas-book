@@ -22,6 +22,12 @@
         frame = single,
         keywordstyle=[2]{\color{orange}},
 } 
+\lstnewenvironment{code}{%
+  \lstset{backgroundcolor=\color{verbgray},
+  frame=single,
+  framerule=0pt,
+  basicstyle=\ttfamily,
+  columns=fullflexible}}{}
 \usepackage{pdfpages}
 \usepackage{xcolor}
 \usepackage{graphicx}
@@ -49,6 +55,7 @@
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{3}
 \usepackage{color,soul}
+\definecolor{verbgray}{gray}{0.9}
 
 \title{Programowanie aplikacji sieciowych \\ \small Zbiór zadań, część pierwsza}
 \date{}
@@ -63,6 +70,9 @@
 
 \newpage
 
+\input{python.tex}
+
+\newpage 
 \section{Zadania wprowadzające}
 
 \begin{enumerate}[label=\textbf{1.\arabic*}]\setlength{\itemsep}{1em}
@@ -241,6 +251,9 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
 \subsection{Protokół IMAP}
 
 \section{Protokół HTTP}
+
+\newpage 
+\input{answers.tex}
 
 
 \end{document}
