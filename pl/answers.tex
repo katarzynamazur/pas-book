@@ -11,7 +11,7 @@
 \end{figure}   
 % #####################################################################################################
 
-\item Możesz przetestować program używając swojego lokalnego adresu IPv6: \texttt{::1} lub \texttt{localhost} lub \\ \texttt{0000:0000:0000:0000:0000:0000:0000:0001}. 
+\item Możesz przetestować program używając swojego lokalnego adresu IPv6: \texttt{::1} lub \texttt{ip6-localhost} lub \\ \texttt{0000:0000:0000:0000:0000:0000:0000:0001}. 
 
 \begin{figure}[h]
 \caption{Wynik działania programu \texttt{nmap} dla lokalnej maszyny i portu \texttt{22}}
@@ -30,7 +30,7 @@
 \end{figure}   
 % #####################################################################################################
 
-\item Aby przetestować poprawność swojego rozwiązania, możesz przeskanować swój własny komputer, żeby sprawdzić, czy skanowanie da taki sam wynik, jak Twój program. Do tego celu możesz wykorzystać np. narzędzie \texttt{nmap}. Zainstaluj \texttt{nmap}: \texttt{sudo apt install nmap}, a następnie wydaj polecenie: \texttt{nmap -6 -p1-65535 localhost} (lub \texttt{nmap -6 -p1-65535 ::1}) aby sprawdzić, jakie porty są otwarte na Twoim komputerze. Porównaj wynik z działaniem Twojego programu dla tego samego portu.  
+\item Aby przetestować poprawność swojego rozwiązania, możesz przeskanować swój własny komputer, żeby sprawdzić, czy skanowanie da taki sam wynik, jak Twój program. Do tego celu możesz wykorzystać np. narzędzie \texttt{nmap}. Zainstaluj \texttt{nmap}: \texttt{sudo apt install nmap}, a następnie wydaj polecenie: \texttt{nmap -6 -p1-65535 ip6-localhost} (lub \texttt{nmap -6 -p1-65535 ::1}) aby sprawdzić, jakie porty są otwarte na Twoim komputerze. Porównaj wynik z działaniem Twojego programu dla tego samego portu.  
 
 \begin{figure}[h]
 \caption{Wynik działania programu \texttt{nmap} dla lokalnej maszyny i wszystkich jej portów}
@@ -101,4 +101,20 @@
 
 \noindent Tak uruchomiony serwer działa na Twoim komputerze, jego adres IPv6 to \texttt{::1} (\texttt{localhost}), numer portu to 3010.
 %#####################################################################################################
+ \item    Aby przetestować poprawność swojego rozwiązania, możesz przeskanować swój własny komputer, żeby sprawdzić, czy skanowanie da taki sam wynik, jak Twój program. Do tego celu możesz wykorzystać np. narzędzie \texttt{nmap} z parametrem \texttt{-{}-}\texttt{script=banner}. Zainstaluj \texttt{nmap}: \texttt{sudo apt install nmap}, a następnie wydaj polecenie: \texttt{nmap -p 22} \texttt{-{}-}\texttt{script=banner} \texttt{localhost} (lub \texttt{nmap -p 22} \texttt{-{}-}\texttt{script=banner} \texttt{127.0.0.1}) aby sprawdzić, czy port 22 jest otwarty na Twoim komputerze, i jaka usługa jest uruchomiona na tym porcie. Porównaj wynik z działaniem Twojego programu dla tego samego portu.  
+
+\begin{figure}[h]
+\caption{Wynik działania programu \texttt{nmap} dla lokalnej maszyny i portu \texttt{22}}
+\centering
+\includegraphics[scale=0.3]{./images/answers/ex3.11.png}
+\end{figure}   
+%#####################################################################################################
+ \item    Aby przetestować poprawność swojego rozwiązania, możesz przeskanować swój własny komputer, żeby sprawdzić, czy skanowanie da taki sam wynik, jak Twój program. Do tego celu możesz wykorzystać np. narzędzie \texttt{nmap} z parametrem \texttt{-{}-}\texttt{script=banner}. Zainstaluj \texttt{nmap}: \texttt{sudo apt install nmap}, a następnie wydaj polecenie: \texttt{nmap -p 22 -6} \texttt{-{}-}\texttt{script=banner} \texttt{ip6-localhost} (lub \texttt{nmap -p 22 -6} \texttt{-{}-}\texttt{script=banner} \texttt{::1}) aby sprawdzić, czy port 22 jest otwarty na Twoim komputerze, i jaka usługa jest uruchomiona na tym porcie. Porównaj wynik z działaniem Twojego programu dla tego samego portu.  
+
+\begin{figure}[h]
+\caption{Wynik działania programu \texttt{nmap} dla lokalnej maszyny i portu \texttt{22}}
+\centering
+\includegraphics[scale=0.3]{./images/answers/ex3.12.png}
+\end{figure}  
+
 \end{enumerate}
