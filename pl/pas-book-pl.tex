@@ -10,6 +10,7 @@
  left=20mm,
  top=20mm,
  }
+\usepackage{alltt}
 \usepackage{listings} 
 \lstset{language=Python, 
         basicstyle=\ttfamily\small, 
@@ -52,8 +53,8 @@
 \renewcommand{\footrulewidth}{0.4pt}
 \fancyfoot[LE,RO]{\thepage}
 \pagestyle{fancy}
-\setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
 \usepackage{color,soul}
 \definecolor{verbgray}{gray}{0.9}
 
@@ -121,10 +122,10 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
 \item Z to wydobyte z pakietu dane 
 \end{itemize}
 
- prześle do serwera UDP działającego na wskazanym porcie pod podanym adresem IPv4, w celu sprawdzenia, czy udało się prawidłowo odczytać wymagane pola. Serwer zwróci odpowiedź \texttt{TAK} lub \texttt{NIE}, a w przypadku błędnego sformatowania wiadomości, odeśle odpowiedź \texttt{BAD\_SYNTAX}.  Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+ prześle do serwera UDP działającego na wskazanym porcie pod podanym adresem IPv4, w celu sprawdzenia, czy udało się prawidłowo odczytać wymagane pola. Serwer zwróci odpowiedź \texttt{TAK} lub \texttt{NIE}, a w przypadku błędnego sformatowania wiadomości, odeśle odpowiedź \texttt{BAD\_SYNTAX}.  Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
  % ####################################################################################################################  
-  \item Zmodyfikuj program z zadania \ref{ex21} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+  \item Zmodyfikuj program z zadania \ref{ex21} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
  
 
 % ####################################################################################################################  
@@ -162,11 +163,11 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
 \item Z to wydobyte z pakietu dane 
 \end{itemize}
 
- prześle do serwera TCP działającego na wskazanym porcie pod podanym adresem IPv4, w celu sprawdzenia, czy udało się prawidłowo odczytać wymagane pola. Serwer zwróci odpowiedź \texttt{TAK} lub \texttt{NIE}, a w przypadku błędnego sformatowania wiadomości, odeśle odpowiedź \texttt{BAD\_SYNTAX}.  Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+ prześle do serwera TCP działającego na wskazanym porcie pod podanym adresem IPv4, w celu sprawdzenia, czy udało się prawidłowo odczytać wymagane pola. Serwer zwróci odpowiedź \texttt{TAK} lub \texttt{NIE}, a w przypadku błędnego sformatowania wiadomości, odeśle odpowiedź \texttt{BAD\_SYNTAX}.  Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 % ####################################################################################################################  
  
 
-  \item Zmodyfikuj program z zadania \ref{ex22} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+  \item Zmodyfikuj program z zadania \ref{ex22} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
 \end{enumerate}
 
@@ -176,41 +177,41 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
 \subsection*{Gniazda TCP}
 
 \begin{enumerate}[label=\textbf{3.\arabic*}]\setlength{\itemsep}{1em}
-    \item \label{ex31} Napisz program klienta, w którym połączysz się z serwerem na danym porcie przy użyciu protokołu TCP. Adres IPv4 serwera i numer portu pobierz jako argumenty linii poleceń. Wyświetl informację, czy udało się nawiązać połączenie. Program powinien akceptować adres w postaci adresu IPv4 jak i hostname. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+    \item \label{ex31} Napisz program klienta, w którym połączysz się z serwerem na danym porcie przy użyciu protokołu TCP. Adres IPv4 serwera i numer portu pobierz jako argumenty linii poleceń. Wyświetl informację, czy udało się nawiązać połączenie. Program powinien akceptować adres w postaci adresu IPv4 jak i hostname. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
     
-    \item Zmodyfikuj program z zadania \ref{ex31} w taki sposób, aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+    \item Zmodyfikuj program z zadania \ref{ex31} w taki sposób, aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
     
-    \item \label{ex33} Napisz program klienta (prosty skaner portów sieciowych), który dla danego serwera przy użyciu protokołu TCP będzie sprawdzał, jakie porty są otwarte, a jakie zamknięte. Adres IPv4 serwera pobierz jako argument linii poleceń. Program powinien akceptować adres w postaci adresu IPv4 jak i hostname.  Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+    \item \label{ex33} Napisz program klienta (prosty skaner portów sieciowych), który dla danego serwera przy użyciu protokołu TCP będzie sprawdzał, jakie porty są otwarte, a jakie zamknięte. Adres IPv4 serwera pobierz jako argument linii poleceń. Program powinien akceptować adres w postaci adresu IPv4 jak i hostname.  Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
     
-    \item  Zmodyfikuj program z zadania \ref{ex33} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+    \item  Zmodyfikuj program z zadania \ref{ex33} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
     
-    \item \label{ex35} Napisz program klienta, który z serwera o podanym adresie IPv4 i porcie pobierze aktualną datę i czas, a następnie wyświetli je na konsoli.  Adres IPv4 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+    \item \label{ex35} Napisz program klienta, który z serwera o podanym adresie IPv4 i porcie pobierze aktualną datę i czas, a następnie wyświetli je na konsoli.  Adres IPv4 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
     
-     \item Zmodyfikuj program z zadania \ref{ex35} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+     \item Zmodyfikuj program z zadania \ref{ex35} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
      
-     \item \label{ex37} Napisz program klienta, który połączy się z serwerem TCP działającym pod podanym adresem IPv4 na podanym porcie, a następnie wyśle do niego wiadomość i odbierze odpowiedź.  Adres IPv4 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+     \item \label{ex37} Napisz program klienta, który połączy się z serwerem TCP działającym pod podanym adresem IPv4 na podanym porcie, a następnie wyśle do niego wiadomość i odbierze odpowiedź.  Adres IPv4 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
      
-     \item Zmodyfikuj program z zadania \ref{ex37} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+     \item Zmodyfikuj program z zadania \ref{ex37} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
      
-     \item \label{ex39} Napisz program klienta, który połączy się z serwerem TCP działającym pod podanym adresem IPv4 na podanym porcie,  a następnie będzie w pętli wysyłał do niego tekst wczytany od użytkownika (jako argument wywołania programu bądź jako dane podawane na konsoli), i odbierał odpowiedzi.  Adres IPv4 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+     \item \label{ex39} Napisz program klienta, który połączy się z serwerem TCP działającym pod podanym adresem IPv4 na podanym porcie,  a następnie będzie w pętli wysyłał do niego tekst wczytany od użytkownika (jako argument wywołania programu bądź jako dane podawane na konsoli), i odbierał odpowiedzi.  Adres IPv4 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
      
-     \item Zmodyfikuj program z zadania \ref{ex39} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+     \item Zmodyfikuj program z zadania \ref{ex39} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
-    \item  \label{ex311} Napisz program klienta (prosty skaner portów sieciowych), który dla danego serwera przy użyciu protokołu TCP będzie sprawdzał, jakie porty są otwarte, a jakie zamknięte. Oprócz informacji o otwartych / zamkniętych portach, program powinien również wyświetlać informację o tym, jaka usługa jest uruchomiona na danym porcie (baner usługi).  Adres IPv4 serwera pobierz jako argument linii poleceń. Program powinien akceptować adres w postaci adresu IPv4 jak i hostname.  Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów.  
+    \item  \label{ex311} Napisz program klienta (prosty skaner portów sieciowych), który dla danego serwera przy użyciu protokołu TCP będzie sprawdzał, jakie porty są otwarte, a jakie zamknięte. Oprócz informacji o otwartych / zamkniętych portach, program powinien również wyświetlać informację o tym, jaka usługa jest uruchomiona na danym porcie (baner usługi).  Adres IPv4 serwera pobierz jako argument linii poleceń. Program powinien akceptować adres w postaci adresu IPv4 jak i hostname.  Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.  
     
-    \item Zmodyfikuj program z zadania \ref{ex311} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+    \item Zmodyfikuj program z zadania \ref{ex311} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
     
-    \item \label{ex313} Napisz program klienta, który połączy się z serwerem TCP działającym pod podanym adresem IPv4 na podanym porcie, a następnie wyśle do niego wiadomość i odbierze odpowiedź. Warunkiem zadania jest, aby klient wysłał i odebrał od serwera wiadomość o maksymalnej długości 20 znaków. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów.  Uwzględnij sytuacje, gdy:
+    \item \label{ex313} Napisz program klienta, który połączy się z serwerem TCP działającym pod podanym adresem IPv4 na podanym porcie, a następnie wyśle do niego wiadomość i odbierze odpowiedź. Warunkiem zadania jest, aby klient wysłał i odebrał od serwera wiadomość o maksymalnej długości 20 znaków. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.  Uwzględnij sytuacje, gdy:
     \begin{itemize}
     \item wiadomość do wysłania jest za krótka - ma być wówczas uzupełniania do 20 znaków znakami spacji
     \item wiadomość do wysłania jest za długa - ma być przycięta do 20 znaków (lub wysłana w całości - sprawdź, co się wówczas stanie)
     \end{itemize}
     
-    \item Zmodyfikuj program z zadania \ref{ex313} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+    \item Zmodyfikuj program z zadania \ref{ex313} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
     
-    \item \label{ex315} Dostępne dla gniazd funkcje \texttt{recv} i \texttt{send} nie gwarantują wysłania / odbioru wszystkich danych. Rozważmy funkcję \texttt{recv}. Przykładowo, $100$ bajtów może zostać wysłane jako grupa po $10$ bajtów, albo od razu w całości. Oznacza to, iż jeśli używamy gniazd TCP, musimy odbierać dane, dopóki nie mamy pewności, że odebraliśmy odpowiednią ich ilość. Napisz program klienta, który połączy się z serwerem TCP działającym pod podanym adresem IPv4 na podanym porcie, a następnie wyśle do niego wiadomość i odbierze odpowiedź. Dane odbieraj / wysyłaj w ten sposób, aby mieć pewność, że klient w rzeczywistości odebrał / wysłał wiadomość o wymaganej długości. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+    \item \label{ex315} Dostępne dla gniazd funkcje \texttt{recv} i \texttt{send} nie gwarantują wysłania / odbioru wszystkich danych. Rozważmy funkcję \texttt{recv}. Przykładowo, $100$ bajtów może zostać wysłane jako grupa po $10$ bajtów, albo od razu w całości. Oznacza to, iż jeśli używamy gniazd TCP, musimy odbierać dane, dopóki nie mamy pewności, że odebraliśmy odpowiednią ich ilość. Napisz program klienta, który połączy się z serwerem TCP działającym pod podanym adresem IPv4 na podanym porcie, a następnie wyśle do niego wiadomość i odbierze odpowiedź. Dane odbieraj / wysyłaj w ten sposób, aby mieć pewność, że klient w rzeczywistości odebrał / wysłał wiadomość o wymaganej długości. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
     
-    \item Zmodyfikuj program z zadania \ref{ex315} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+    \item Zmodyfikuj program z zadania \ref{ex315} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
    
 \end{enumerate}
 
@@ -218,25 +219,25 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
 
 \begin{enumerate}[label=\textbf{3.\arabic*}, resume]\setlength{\itemsep}{1em}
 
-\item \label{ex317}  Napisz program klienta, który połączy się z serwerem UDP działającym pod podanym adresem IPv4 na podanym porcie, a następnie wyśle do niego wiadomość i odbierze odpowiedź. Adres IPv4 serwera oraz numer portu pobierz jako argumenty linii poleceń. Program powinien akceptować adres w postaci adresu IPv4 jak i hostname.  Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów.  
+\item \label{ex317}  Napisz program klienta, który połączy się z serwerem UDP działającym pod podanym adresem IPv4 na podanym porcie, a następnie wyśle do niego wiadomość i odbierze odpowiedź. Adres IPv4 serwera oraz numer portu pobierz jako argumenty linii poleceń. Program powinien akceptować adres w postaci adresu IPv4 jak i hostname.  Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.  
 
-\item  Zmodyfikuj program z zadania \ref{ex317} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+\item  Zmodyfikuj program z zadania \ref{ex317} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6.  Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
-\item \label{ex319} Napisz program klienta, który połączy się z serwerem UDP działającym pod podanym adresem IPv4 na podanym porcie,  a następnie będzie w pętli wysyłał do niego tekst wczytany od użytkownika, i odbierał odpowiedzi.    Adres IPv4 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+\item \label{ex319} Napisz program klienta, który połączy się z serwerem UDP działającym pod podanym adresem IPv4 na podanym porcie,  a następnie będzie w pętli wysyłał do niego tekst wczytany od użytkownika, i odbierał odpowiedzi.    Adres IPv4 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
-\item  Zmodyfikuj program z zadania \ref{ex319} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+\item  Zmodyfikuj program z zadania \ref{ex319} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
-\item \label{ex321} Napisz program klienta, który połączy się z serwerem UDP działającym pod podanym adresem IPv4 na podanym porcie, a następnie prześle do serwera liczbę, operator, liczbę (pobrane od użytkownika) i odbierze odpowiedź. Adres IPv4 serwera i numer portu pobierz jako argumenty linii poleceń.  Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+\item \label{ex321} Napisz program klienta, który połączy się z serwerem UDP działającym pod podanym adresem IPv4 na podanym porcie, a następnie prześle do serwera liczbę, operator, liczbę (pobrane od użytkownika) i odbierze odpowiedź. Adres IPv4 serwera i numer portu pobierz jako argumenty linii poleceń.  Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
-\item  Zmodyfikuj program z zadania \ref{ex321} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+\item  Zmodyfikuj program z zadania \ref{ex321} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
-\item \label{ex322} Napisz program klienta, który połączy się z serwerem UDP działającym pod podanym adresem IPv4 na podanym porcie, a następnie prześle do serwera pobrany z linii poleceń adres IP, i odbierze odpowiadającą mu nazwę hostname. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+\item \label{ex322} Napisz program klienta, który połączy się z serwerem UDP działającym pod podanym adresem IPv4 na podanym porcie, a następnie prześle do serwera pobrany z linii poleceń adres IP, i odbierze odpowiadającą mu nazwę hostname. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
-\item  Zmodyfikuj program z zadania \ref{ex322} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+\item  Zmodyfikuj program z zadania \ref{ex322} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
-\item \label{ex323} Napisz program klienta, który połączy się z serwerem UDP działającym pod podanym adresem IPv4 na podanym porcie, a następnie prześle do serwera nazwę hostname pobraną z linii poleceń, i odbierze odpowiadający mu adres IP.  Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+\item \label{ex323} Napisz program klienta, który połączy się z serwerem UDP działającym pod podanym adresem IPv4 na podanym porcie, a następnie prześle do serwera nazwę hostname pobraną z linii poleceń, i odbierze odpowiadający mu adres IP.  Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
-\item Zmodyfikuj program z zadania \ref{ex323} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Zadanie rozwiąż bez użycia dodatkowych bibliotek (korzystaj jedynie z gniazd). Zadbaj o prawidłową obsługę błędów. 
+\item Zmodyfikuj program z zadania \ref{ex323} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 \end{enumerate}
 
 \newpage
@@ -245,13 +246,41 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
 \subsection*{Gniazda TCP}
 \subsection*{Gniazda UDP}
 
-\section{Protokoły pocztowe}
-\subsection{Protokół SMTP}
-\subsection{Protokół POP3}
-\subsection{Protokół IMAP}
+\newpage
+\section{Bezpiecznie gniazda}
 
+\newpage
+\section{Protokoły pocztowe}
+
+\subsection*{Protokół SMTP}
+
+\begin{enumerate}[label=\textbf{6.\arabic*}]\setlength{\itemsep}{1em}
+
+\item Pod podanym adresem i numerem portu działa serwer obsługujący protokół ESMTP/SMTP. Wykorzystując gotowe oprogramowanie klienckie połącz się z serwerem działajacym pod podanym adresem i numerem portu, a następnie wyślij wiadomość e-mail korzytając z komend protokołu ESMTP.  (\textit{Zadanie nie jest zadaniem programistycznym, wymaga jedynie użycia gotowego klienta protokołu SMTP w celu zapoznania się z podstawowymi poleceniami protokołu.})
+
+\item Pod podanym adresem i numerem portu działa serwer obsługujący protokół ESMTP/SMTP. Wykorzystując gotowe oprogramowanie klienckie połącz się z serwerem działajacym pod podanym adresem i numerem portu, a następnie wyślij kilka wiadomości e-mail do kilku odbiorców korzytając z komend protokołu ESMTP.  (\textit{Zadanie nie jest zadaniem programistycznym, wymaga jedynie użycia gotowego klienta protokołu SMTP w celu zapoznania się z podstawowymi poleceniami protokołu.})
+
+\item Pod podanym adresem i numerem portu działa serwer obsługujący protokół ESMTP/SMTP. Wykorzystując gotowe oprogramowanie klienckie połącz się z serwerem działajacym pod podanym adresem i numerem portu, a następnie wyślij wiadomość spoofed e-mail (z podmienionym adresem nadawcy) korzytając z komend protokołu ESMTP.  (\textit{Zadanie nie jest zadaniem programistycznym, wymaga jedynie użycia gotowego klienta protokołu SMTP w celu zapoznania się z podstawowymi poleceniami protokołu.})
+
+\item Pod podanym adresem i numerem portu działa serwer obsługujący protokół ESMTP/SMTP. Wykorzystując gotowe oprogramowanie klienckie połącz się z serwerem działajacym pod podanym adresem i numerem portu, a następnie wyślij wiadomość e-mail korzytając z komend protokołu ESMTP.  Do wiadomości dodaj załącznik - dowolny plik tekstowy (sprawdź format MIME: \href{https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html}{Multipart} i \href{https://www.w3.org/Protocols/rfc1341/7_3_Message.html}{Content-Type}).  Możesz wykorzystać \texttt{openssl} do przekonwertowania pliku: \texttt{cat plik.txt \textbar  openssl base64}.  (\textit{Zadanie nie jest zadaniem programistycznym, wymaga jedynie użycia gotowego klienta protokołu SMTP w celu zapoznania się z podstawowymi poleceniami protokołu.})
+
+\item Pod podanym adresem i numerem portu działa serwer obsługujący protokół ESMTP/SMTP. Wykorzystując gotowe oprogramowanie klienckie połącz się z serwerem działajacym pod podanym adresem i numerem portu, a następnie wyślij wiadomość e-mail korzytając z komend protokołu ESMTP. Do wiadomości dodaj załącznik - dowolny obrazek (sprawdź format MIME: \href{https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html}{Multipart} i \href{https://www.w3.org/Protocols/rfc1341/7_3_Message.html}{Content-Type}). Możesz wykorzystać \texttt{openssl} do przekonwertowania obrazka: \texttt{cat obrazek \textbar  openssl base64}. (\textit{Zadanie nie jest zadaniem programistycznym, wymaga jedynie użycia gotowego klienta protokołu SMTP w celu zapoznania się z podstawowymi poleceniami protokołu.})
+
+\item Napisz program klienta, który połączy się z serwerem obsługującym protokół ESMTP/SMTP, działającym  na podanym porcie, a następnie wyśle wiadomość e-mail używając komend protokołu ESMTP. O adres nadawcy, odbiorcy (odbiorców), temat wiadomości i jej treść zapytaj użytkownika. Adres serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
+
+\item Napisz program klienta, który połączy się z serwerem obsługującym protokół ESMTP/SMTP, działającym  na podanym porcie, a następnie wyśle wiadomość e-mail używając komend protokołu ESMTP.  Do wiadomości dodaj załącznik - dowolny plik tekstowy (sprawdź format MIME: \href{https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html}{Multipart} i \href{https://www.w3.org/Protocols/rfc1341/7_3_Message.html}{Content-Type}).  O adres nadawcy, odbiorcy (odbiorców), temat wiadomości i jej treść zapytaj użytkownika. Adres serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
+
+\item Napisz program klienta, który połączy się z serwerem obsługującym protokół ESMTP/SMTP, działającym  na podanym porcie, a następnie wyśle wiadomość e-mail używając komend protokołu ESMTP.  Do wiadomości dodaj załącznik - dowolny obrazek (sprawdź format MIME: \href{https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html}{Multipart} i \href{https://www.w3.org/Protocols/rfc1341/7_3_Message.html}{Content-Type}).  O adres nadawcy, odbiorcy (odbiorców), temat wiadomości i jej treść zapytaj użytkownika. Adres serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+\end{enumerate}
+
+\subsection*{Protokół POP3}
+\subsection*{Protokół IMAP}
+
+\newpage 
 \section{Protokół HTTP}
 
+\newpage 
 \input{answers.tex}
 
 
