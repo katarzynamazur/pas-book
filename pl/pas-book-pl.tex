@@ -59,7 +59,7 @@
 \definecolor{verbgray}{gray}{0.9}
 
 \title{Programowanie aplikacji sieciowych \\ \small Zbiór zadań, część pierwsza}
-\date{}
+%\date{}
 \author{Katarzyna Mazur}
 
 \begin{document}
@@ -240,6 +240,7 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
 \item Zmodyfikuj program z zadania \ref{ex323} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Adres IPv6 serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 \end{enumerate}
 
+
 \newpage
 \section{Gniazda serwerowe}
 
@@ -271,6 +272,14 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
 \item Napisz program klienta, który połączy się z serwerem obsługującym protokół ESMTP/SMTP, działającym  na podanym porcie, a następnie wyśle wiadomość e-mail używając komend protokołu ESMTP.  Do wiadomości dodaj załącznik - dowolny plik tekstowy (sprawdź format MIME: \href{https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html}{Multipart} i \href{https://www.w3.org/Protocols/rfc1341/7_3_Message.html}{Content-Type}).  O adres nadawcy, odbiorcy (odbiorców), temat wiadomości i jej treść zapytaj użytkownika. Adres serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
 \item Napisz program klienta, który połączy się z serwerem obsługującym protokół ESMTP/SMTP, działającym  na podanym porcie, a następnie wyśle wiadomość e-mail używając komend protokołu ESMTP.  Do wiadomości dodaj załącznik - dowolny obrazek (sprawdź format MIME: \href{https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html}{Multipart} i \href{https://www.w3.org/Protocols/rfc1341/7_3_Message.html}{Content-Type}).  O adres nadawcy, odbiorcy (odbiorców), temat wiadomości i jej treść zapytaj użytkownika. Adres serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+\item Napisz program klienta, który połączy się z serwerem obsługującym protokół ESMTP/SMTP, działającym  na podanym porcie, a następnie wyśle wiadomość e-mail używając komend protokołu ESMTP.  Do wiadomości dodaj załącznik - dowolny plik dźwiękowy. (sprawdź format MIME: \href{https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html}{Multipart} i \href{https://www.w3.org/Protocols/rfc1341/7_3_Message.html}{Content-Type}).  O adres nadawcy, odbiorcy (odbiorców), temat wiadomości i jej treść zapytaj użytkownika. Adres serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+\item Napisz program klienta, który połączy się z serwerem obsługującym protokół ESMTP/SMTP, działającym  na podanym porcie, a następnie wyśle wiadomość e-mail używając komend protokołu ESMTP. Treść wiadomości powinna zostać sformatowana za pomocą tagów HTML, przykładowo: \texttt{<b>}\textbf{pogrubienie}\texttt{</b>}, \texttt{<i>}\textit{pochylenie}\texttt{</i>}, \texttt{<u>}\underline{podkreślenie}\texttt{</u>} i innych wybranych.   O adres nadawcy, odbiorcy (odbiorców), temat wiadomości i jej treść zapytaj użytkownika. Adres serwera i numer portu pobierz jako argumenty linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+\item  \label{ex611} Napisz program serwera, który działając pod adresem IPv4 \texttt{127.0.0.1} oraz na określonym porcie TCP, będzie serwerem poczty, obsługującym protokół SMTP. Nie realizuj faktycznego wysyłania e-maila, tylko zasymuluj jego działanie tak, żeby napisany wcześniej klient SMTP myślał, że wiadomość została wysłana. Pamiętaj o obsłudze przypadku, gdy klient poda nie zaimplementowaną przez serwer komendę. Numer portu pobierz jako argument linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+\item  Zmodyfikuj program z zadania \ref{ex611} w taki sposób,  aby łączył serwer działał pod adresem IPv6 - \texttt{::1}. Numer portu pobierz jako argument linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
 
 \end{enumerate}
 
