@@ -512,3 +512,37 @@ closed
 \item Możesz skorzystać z jednego z serwerów SMTP zaproponowanego w rozwiązaniu do zadania \ref{answ61}. 
 
 \end{enumerate}
+
+%#####################################################################################################
+\newpage
+\subsection*{Protokół HTTP}
+
+\begin{enumerate}[label=\textbf{7.\arabic*}]\setlength{\itemsep}{1em}
+\item Serwer możesz uruchomić za pomocą poniższych poleceń:
+
+\begin{verbatim}
+docker pull mazurkatarzyna/pas-book-p1-ch7-ex1:latest
+docker run -dp 7001:80 mazurkatarzyna/pas-book-p1-ch7-ex1
+\end{verbatim}
+
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7001/html}
+
+\item Serwer możesz uruchomić za pomocą poniższych poleceń:
+
+\begin{verbatim}
+docker pull mazurkatarzyna/pas-book-p1-ch7-ex2:latest
+docker run -dp 7002:80 mazurkatarzyna/pas-book-p1-ch7-ex2
+\end{verbatim}
+
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7002/image/png}
+
+\item Serwer możesz uruchomić za pomocą poniższych poleceń:
+
+\begin{verbatim}
+docker pull mazurkatarzyna/pas-book-p1-ch7-ex3:latest
+docker run -dp 7003:80 mazurkatarzyna/pas-book-p1-ch7-ex3
+\end{verbatim}
+
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7003/image.jpg}
+
+\end{enumerate}
