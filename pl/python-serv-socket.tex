@@ -1,0 +1,188 @@
+\section*{Gniazda w języku Python - moduł socket} \mbox{}\\
+
+\noindent \textbf{Tworzenie gniazd serwerowych TCP, IPv4}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+if __name__ == '__main__':
+
+	sockIPv4 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	sockIPv4.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+	sockIPv4.close()
+\end{code} \mbox{}\\
+
+\noindent \textbf{Tworzenie gniazd serwerowych TCP, IPv6}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+if __name__ == '__main__':
+
+	sockIPv6 = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+	sockIPv6.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+	sockIPv6.close()
+\end{code} \mbox{}\\
+
+\noindent \textbf{Tworzenie gniazd serwerowych UDP, IPv4}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket 
+
+if __name__ == '__main__':
+
+	sockIPv4 = socket.socket(socket.AF_INET,  socket.SOCK_DGRAM)
+	sockIPv4.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+	sockIPv4.close()
+\end{code}\mbox{}\\
+
+\noindent \textbf{Tworzenie gniazd serwerowych UDP, IPv6}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket 
+
+if __name__ == '__main__':
+
+	sockIPv6 = socket.socket(socket.AF_INET6,  socket.SOCK_DGRAM)
+	sockIPv6.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+	sockIPv6.close()
+\end{code}\mbox{}\\
+
+\newpage
+\noindent \textbf{Gniazdo serwerowe TCP, IPv4: nasłuchiwanie na danym porcie}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+if __name__ == "__main__":
+
+	sockIPv4 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	sockIPv4.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+	server_address = ('127.0.0.1', 80)
+	sockIPv4.bind(server_address)
+	sockIPv4.listen(1)
+
+	sockIPv4.close()
+\end{code}\mbox{}\\
+
+
+\noindent \textbf{Gniazdo serwerowe TCP, IPv6: nasłuchiwanie na danym porcie}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+if __name__ == "__main__":
+
+
+    sockIPv6 = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+    sockIPv6.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+    sockIPv6.bind(("::1", 80))
+    sockIPv6.listen(1)
+    
+    sockIPv6.close()
+\end{code}\mbox{}\\
+
+\newpage
+\noindent \textbf{Gniazdo serwerowe TCP, IPv4: komunikacja z klientem (wysyłanie i odbieranie danych)}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+if __name__ == "__main__":
+
+    sockIPv4 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sockIPv4.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+    server_address = ("127.0.0.1", 80)
+    sockIPv4.bind(server_address)
+    sockIPv4.listen(1)
+
+    connection, client_address = sockIPv4.accept()
+
+    try:
+        data = connection.recv(1024).decode()
+        if data:
+            connection.sendall(data.encode())
+            print(data)
+    finally:
+        connection.close()
+\end{code}\mbox{}\\
+
+\noindent \textbf{Gniazdo serwerowe TCP, IPv6: komunikacja z klientem (wysyłanie i odbieranie danych)}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+HOST = '::1'  # localhost
+PORT = 80
+
+def main():
+    with socket.socket(socket.AF_INET6, socket.SOCK_STREAM) as server_socket:
+        server_socket.bind((HOST, PORT))
+        server_socket.listen(1)
+        print(f'Server listening on {HOST}:{PORT}')
+
+        client_socket, client_addr = server_socket.accept()
+        print(f'Connected to client {client_addr[0]}:{client_addr[1]}')
+
+        data = client_socket.recv(1024)					# odbieranie
+        if data:
+            print(f'Received data: {data.decode()}')
+            client_socket.sendall(data)					# wysylanie
+
+        client_socket.close()
+        print(f'Connection closed with client {client_addr[0]}:{client_addr[1]}')
+
+if __name__ == '__main__':
+    main()
+\end{code}\mbox{}\\
+
+\newpage
+\noindent \textbf{Gniazdo serwerowe UDP, IPv4: komunikacja z klientem (wysyłanie i odbieranie danych)}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket
+
+if __name__ == "__main__":
+    host = "127.0.0.1"   
+    port = 80   
+    
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    server_socket.bind((host, port))
+
+    print(f"UDP Echo Server is listening on {host}:{port}...")
+
+    data, address = server_socket.recvfrom(1024)					# odbieranie
+    print(f"Received data from {address[0]}:{address[1]}: {data.decode()}")
+
+    server_socket.sendto(data, address)														# wysylanie
+    print(f"Sent data back to {address[0]}:{address[1]}: {data.decode()}")
+
+    server_socket.close()
+\end{code}\mbox{}\\
+
+\noindent \textbf{Gniazdo serwerowe UDP, IPv6: komunikacja z klientem (wysyłanie i odbieranie danych)}
+
+\begin{code}
+#!/usr/bin/env python3
+
+import socket
+
+HOST = "::1"
+PORT = 80
+
+sockIPv6 = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
+sockIPv6.close()
+\end{code}
+

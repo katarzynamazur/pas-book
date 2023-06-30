@@ -116,6 +116,16 @@
 \centering
 \includegraphics[scale=0.3]{./images/answers/ex3.12.png}
 \end{figure}  
+%#####################################################################################################
+\item Aby przetestować poprawność swojego rozwiązania, możesz skorzystać z gotowego serwera, do którego może połączyć się Twój klient, aby wysłać wiadomość. Aby uruchomić serwer, zainstaluj \href{https://www.docker.com/}{Dockera}, a następnie w konsoli wydaj polecenia:
+
+\begin{itemize}
+\item Pobierz obraz serwera:\\ \texttt{docker pull mazurkatarzyna/pas-book-p1-ch3-ex13-server:latest}
+
+\item Uruchom serwer za pomocą Dockera:\\ \texttt{docker run -dp 3013:3013 mazurkatarzyna/pas-book-p1-ch3-ex13-server}
+\end{itemize}
+
+\noindent Tak uruchomiony serwer działa na Twoim komputerze, jego adres IPv4 to \texttt{127.0.0.1} (\texttt{localhost}), numer portu to 3013.
 
 \end{enumerate}
 %#####################################################################################################
@@ -538,6 +548,8 @@ docker run -dp 7002:80 mazurkatarzyna/pas-book-p1-ch7-ex2
 \noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7002/image/png}
 
 % #################################################################################################################
+<<<<<<< HEAD
+=======
 \item Serwer możesz uruchomić za pomocą poniższych poleceń:
 
 \begin{verbatim}
@@ -570,15 +582,6 @@ docker run -dp 7005:80 mazurkatarzyna/pas-book-p1-ch7-ex5
 
 \item 
 
-% #################################################################################################################
-\item Serwer możesz uruchomić za pomocą poniższych poleceń:
-
-\begin{verbatim}
-docker pull mazurkatarzyna/pas-book-p1-ch7-ex3:latest
-docker run -dp 7003:80 mazurkatarzyna/pas-book-p1-ch7-ex3
-\end{verbatim}
-
-\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7003/image.jpg}
 
 
 \end{enumerate}
