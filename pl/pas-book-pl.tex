@@ -298,13 +298,16 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
 
 \item Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex1:latest}), uruchom serwer HTTP. Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7001} działa serwer obsługujący protokół HTTP w wersji 1.1. Pod odnośnikiem \texttt{/html} udostępnia prostą stronę HTML. Napisz program klienta, który połączy się
 z serwerem, a następnie pobierze treść strony i zapisze ją na dysku jako plik z rozszerzeniem \texttt{*.html}. Spreparuj żądanie HTTP tak, aby serwer myślał, że żądanie przyszło od przeglądarki \texttt{Safari 7.0.3}. Jakich nagłówków HTTP należy użyć?  Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+% #################################################################################################################
 
 \item Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex2:latest}), uruchom serwer HTTP. Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7002} działa serwer obsługujący protokół HTTP w wersji 1.1. Pod odnośnikiem \texttt{/image/png} udostępnia obrazek. Napisz program klienta, który połączy się
 z serwerem, a następnie pobierze obrazek i zapisze go na dysku. Jakich nagłówków HTTP należy użyć? Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+% #################################################################################################################
 
 \item Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex3:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7003} działa serwer obsługujący protokół HTTP w wersji 1.1. Pod odnośnikiem \texttt{/image.jpg} udostępnia obrazek. Napisz program klienta, który połączy się
 z serwerem, a następnie pobierze z serwera obrazek w 3 częściach i po odebraniu wszystkich części złoży go w całość i zapisze na dysku. Jakich nagłówków HTTP należy użyć? Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
 
+% #################################################################################################################
 
 \item  Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex4:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7004} działa serwer obsługujący protokół HTTP w wersji 1.1. Pod odnośnikiem \texttt{/post} udostępnia formularz z polami do wypełnienia. Napisz program klienta, który połączy się z serwerem, a następnie uzupełni formularz danymi pobranymi od użytkownika, a następnie prześle go do serwera i odbierze odpowiedź. \\
 
@@ -317,11 +320,45 @@ Aby sprawdzić, jak wygląda żądanie HTTP potrzebne do wypełnienia i wysłani
 
 podsłuchaj komunikację z serwerem za pomocą Wiresharka, tj. uruchom przeglądarkę oraz Wiresharka; uzupełnij i zatwierdź formularz ręcznie za pomocą przeglądarki, a następnie sprawdź pakiety podsłuchane podczas komunikacji z serwerem działającym pod adresem \texttt{http://127.0.0.1:7004}. Możesz użyć filtrów Wiresharka: \texttt{http.request} oraz \texttt{http.response} (\texttt{http.request $\vert\vert$ http.response}). Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
 
+% #################################################################################################################
 
-%Pod adresem 212.182.24.27 na porcie TCP o numerze 8080 działa serwer obsługujący protokół HTTP w
-%wersji 1.1. Pod odnośnikiem /image.jpg udostępnia obrazek. Napisz program klienta, który połączy się
-%z serwerem, a następnie pobierze z serwera obrazek w 3 częściach i po odebraniu wszystkich części złoży
-%go w całość. Jakich nagłówków HTTP należy użyć?
+\item \textbf{Slowloris, czyli Slow HTTP Headers DoS} Attak o nazwie Slowloris, dzięki wykorzystaniu pewnych koncepcji protokołu HTTP oraz sposobu obsługi żądań serwerów WWW, potrafi całkowicie je sparaliżować w przeciągu kilku sekund. Atak polega na utworzeniu dużej liczby gniazd, a następnie dosyłania w powolny sposób danych częściowych żądań HTTP, co w końcu skutkuje wyczerpaniem puli wolnych wątków obsługujących żądania HTTP.\\
+
+\noindent W klasycznym żądaniu, np. wykorzystującym metodę \texttt{HTTP GET}, do serwera wysyłana jest linia żądania, nagłówki oraz pusta linia CRLF oznaczająca koniec nagłówków. Atak Slowloris polega na wysyłaniu dużej liczby dodatkowych nagłówków, przykładowo \texttt{X-a:} \texttt{b}, które będą sukcesywnie przychodzić do atakowanego serwera dopiero po pewnym czasie.  Podsumowując, atak działa następująco: \newpage
+
+\begin{enumerate}  
+\item Budowane są gniazda TCP (im więcej, tym lepiej, domyślnie ~ 1000)\\ 
+\texttt{sock = socket(AF\_INET, SOCK\_STREAM)}
+\item Następuje podłączenie do serwera i wysyłanie podstawowych nagłówków\\
+\texttt{sock.connect(server)}, \texttt{sock.send('...')},
+\item Wysyłany jest nagłówek \texttt{X-a: b \textbackslash r\textbackslash n} \\
+\texttt{sock.send('...')}
+\item Odczekujemy pewien czas (domyślnie 100 sekund)\\
+\texttt{time.sleep(100)}
+\item Wysyłamy ponownie nagłówek \texttt{X-a: b \textbackslash r\textbackslash n}\\
+\texttt{sock.send('...')}
+\item Powtarzamy do skutku kroki 4. i 5. dla każdego połączenia, ewentualnie dobudowujemy gniazda do zamkniętych połączeń
+\end{enumerate} 
+
+\noindent Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex5:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7005} działa serwer obsługujący protokół HTTP w wersji 1.1.  Znając założenia ataku Slowloris, napisz program klienta - atakującego, który wykona atak Slowloris  na serwer WWW.  Jakich nagłówków HTTP należy użyć? Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+% #################################################################################################################
+
+\item  Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex6:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7006} działa serwer obsługujący protokół HTTP w wersji 1.1. Serwer udostępnia różne wersje językowe swojej strony głównej. Wykorzystując nagłówki protokołu HTTP, napisz program klienta, który połączy się z serwerem, a następnie pobierze niemiecką wersję strony głównej. Jakich nagłówków HTTP należy użyć? Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+% #################################################################################################################
+
+\item Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex3:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7003} działa serwer obsługujący protokół HTTP w wersji 1.1. Pod odnośnikiem \texttt{/image.jpg} udostępnia obrazek. Napisz program klienta, który połączy się
+z serwerem, a następnie pobierze z serwera obrazek w 3 częściach i po odebraniu wszystkich części złoży go w całość i zapisze na dysku. \textbf{Następnie zmodyfikuj program   w taki sposób, aby pobierał z serwera obrazek tylko wtedy, gdy nie zmienił się on od ostatniego pobrania}. Jakich nagłówków HTTP należy użyć? Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+% #################################################################################################################
+
+\item \label{ex78} Napisz program serwera, który działając pod podanym adresem IPv4   oraz na określonym porcie TCP, będzie serwerem HTTP. Obsłuż wybrane nagłówki i co najmniej jeden kod błędu (np. 404).  Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+% #################################################################################################################
+
+\item  Zmodyfikuj program z zadania \ref{ex78} w taki sposób, aby serwer wykorzystywał adres IPv6.  Numer portu pobierz jako argument  linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
+    
+
 
 \end{enumerate}
 
