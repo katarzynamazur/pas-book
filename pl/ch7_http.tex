@@ -1,0 +1,258 @@
+%\noindent \underline{\textbf{Uwaga:}} W niniejszym rozdziale omawiamy protokół HTTP w wersji 1.1. \\
+
+\noindent \textbf{Protokół HTTP (\href{http://www.jmarshall.com/easy/http/}{\textit{Hypertext Transfer Protocol}}, RFC 2616 oraz od 7230 do 7235)} - protokół warstwy aplikacji, wykorzystujący na niższej warstwie (zazwyczaj) gniazda TCP/IP oraz 2 domyślne porty: port niezabezpieczony \texttt{80} i port zabezpieczony: \texttt{443}.\\
+
+
+\noindent Podstawowe informacje:
+
+\begin{itemize}
+\item Protokół HTTP jest protokołem wykorzystywanym do przesyłania plików (ogólnie mówiąc: zasobów) w sieci WWW (World Wide Web), bez względu na to, czy zasobem jest plik HTML, plik graficzny, wynik zapytania, czy cokolwiek innego
+\item Protokół HTTP, do wersji \texttt{1.1}, jest protokołem tekstowym, gdzie komendy protokołu, podobnie jak w SMTP, POP3 czy IMAP są komendami tekstowymi, zrozumiałymi dla człowieka
+\item HTTP to protokół typu zapytanie-odpowiedź. Zapytanie, wysyłane przez klienta, zawiera informację o żądanym zasobie. Odpowiedź, wysyłana przez serwer, zawiera treść zasobu. Jeśli serwer nie jest w stanie zwrócić odpytywanego zasobu, odpowiedź zawiera kod reprezentujący powód, dla którego zasób nie mógł być wysłany (np. zasób nie istnieje)
+\item Formaty zapytania i odpowiedzi HTTP są do siebie podobne; zarówno zapytanie, jak i odpowiedź HTTP zawierają (linia początkowa i nagłówki powinny się kończyć parą znaków \texttt{CRLF},  czyli \texttt{\textbackslash r\textbackslash n}):
+
+\begin{itemize}
+\item linię początkową 
+\item 0 lub więcej nagłówków
+\item pustą linię (\texttt{CRLF},  czyli \texttt{\textbackslash r\textbackslash n})
+\item opcjonalne ciało wiadomości
+\end{itemize}
+
+\textbf{Przykład}:\\
+
+\begin{code}
+linia poczatkowa, inna dla zadania, inna dla odpowiedzi \r\n
+naglowek1: wartosc1 \r\n
+naglowek2: wartosc2 \r\n
+naglowek3: wartosc3 \r\n
+\r\n
+cialo wiadomosci, moze sie skladac z 1 lub
+wielu linii, lub moze byc puste
+\end{code}
+
+\item Nagłówki HTTP to wszelkie komendy używane do komunikacji między przeglądarką WWW (klientem) a serwerem. Nagłówki są to właściwości żądania i odpowiedzi przesyłane wraz z samą wiadomością. Służą one przede wszystkim do sterowania zachowaniem serwera oraz przeglądarki przez nadawcę wiadomości.
+
+\item Jeśli klient wysyła żądanie do serwera HTTP, żądanie powinno zawsze być zakończone parą znaków \texttt{CRLF}   (czyli \texttt{\textbackslash r\textbackslash n})
+\item Serwer odsyłając odpowiedź HTTP nie określa za pomocą żadnych specjalnych znaków końca odsyłanej odpowiedzi. W przypadku, gdy chcemy mieć pewność, że odebraliśmy całą odpowiedź serwera HTTP, musimy parsować odebrane nagłówki  (\texttt{Content-Length} lub \texttt{Transfer-Encoding}), w których może znajdować się informacja o tym, jaki jest rozmiar odpowiedzi serwera, i użyć tej inforamcji do odebrania całej wiadomości. W przypadku, gdy serwer w odpowiedzi HTTP nie odeśle żadnego z powyższych nagłówków, aby mieć pewność odebrania całej odpowiedzi od serwera, musimy odbierać dane, dopóki serwer nie zakończy / zamknie połącznia. Zgodnie z formatem żądania i odpowiedzi HTTP, nagłówki od ciała oddzielają znaki \texttt{CRLF} \texttt{CRLF} (czyli \texttt{\textbackslash r\textbackslash n \textbackslash r\textbackslash n}).
+
+\end{itemize}
+
+\newpage 
+\noindent {\underline{Żądania HTTP}} \\
+
+\begin{itemize}
+\renewcommand{\labelitemi}{\scriptsize}
+
+\item Ogólny format \href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html}{\textbf{\textit{żądania}}} HTTP (pola oddzielone spacjami):\\
+
+\begin{code}
+Method Request-URI HTTP-Version \r\n
+HEADER1: VALUE1 \r\n
+HEADER2: VALUE2 \r\n
+...
+HEADERX: VALUEX \r\n
+\r\n
+BODY
+\r\n
+\end{code}
+
+\noindent gdzie:
+
+\begin{itemize}\renewcommand{\labelitemii}{\scriptsize$\circ$}
+
+\item \verb!Method! - to metoda żądania, dozwolone metody HTTP:
+	\begin{itemize}
+		\item \texttt{GET} – pobranie zasobu wskazanego przez \texttt{Request-URI}
+		\item \texttt{HEAD} – pobiera informacje o zasobie, stosowane do sprawdzania dostępności zasobu
+		\item \texttt{PUT} – przyjęcie danych przesyłanych od klienta do serwera, najczęściej aby zaktualizować wartość zasobu,
+		\item \texttt{POST} – przyjęcie danych przesyłanych od klienta do serwera (np. wysyłanie zawartości formularzy),
+		\item \texttt{DELETE} – żądanie usunięcia zasobu,
+		\item \texttt{OPTIONS} – informacje o opcjach i wymaganiach dotyczących zasobu,
+		\item \texttt{TRACE} – diagnostyka, analiza kanału komunikacyjnego,
+		\item \texttt{CONNECT} – żądanie przeznaczone dla serwerów pośredniczących pełniących funkcje tunelowania,
+		\item \texttt{PATCH} – aktualizacja części zasobu (np. jednego pola).
+	\end{itemize}
+	
+\item \verb!Request-URI! - to ścieżka do zasobu na serwerze, która może zawierać dodatkowo parametry HTTP oraz fragment (za znakiem \#), 
+
+\item \verb!HTTP-Version! - wersja protokołu HTTP, np. \texttt{HTTP/1.0}, \texttt{HTTP/1.1}, \texttt{HTTP/2.0}
+\item \verb!HEADER1, HEADER2, ..., HEADERX! - nagłówki HTTP, \verb!VALLUE1, VALUE2, ..., VALUEX! - wartości konkretnych nagłówków
+\item \verb!BODY! - opcjonalne ciało żądania
+\end{itemize}
+\end{itemize} 
+
+\newpage 
+\noindent {\underline{Odpowiedzi HTTP}} \\
+
+\begin{itemize}
+\renewcommand{\labelitemi}{\scriptsize}
+
+\item Ogólny format \href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html}{\textbf{\textit{odpowiedzi}}} HTTP (pola oddzielone spacjami):\\
+
+\begin{code}
+HTTP-Version   Status-Code   Reason-Phrase   \r\n
+HEADER1: VALUE1 \r\n
+HEADER2: VALUE2 \r\n
+...
+HEADERX: VALUEX \r\n
+\r\n
+BODY
+\r\n
+\end{code}
+
+\noindent gdzie:
+
+\begin{itemize}\renewcommand{\labelitemii}{\scriptsize}
+\item \verb!HTTP-Version! - wersja protokołu HTTP, np. \texttt{HTTP/1.0}, \texttt{HTTP/1.1}, \texttt{HTTP/2.0}
+\item \verb!Status-Code! - \href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html#sec6.1.1}{\textbf{\textit{kod odpowiedzi}}}, który informuje klienta, w jaki sposób żądanie zostało lub nie zostało obsłużone, kody odpowiedzi to liczby trzycyfrowe, gdzie pierwsza z nich określa grupę odpowiedzi:
+
+\begin{itemize}
+\item \verb!1xx! - to kody informacyjne
+\item \verb!2xx! - to kody powodzenia
+\item \verb!3xx! - to kody przekierowania
+\item \verb!4xx! - to kody błędu aplikacji klienta
+\item \verb!5xx! - to kody błędu serwera
+\end{itemize}
+
+\item \verb!Reason-Phrase! - wiadomość powiązana z danym kodem odpowiedzi
+\item \verb!HEADER1, HEADER2, ..., HEADERX! - nagłówki HTTP, \verb!VALLUE1, VALUE2, ..., VALUEX! - wartości konkretnych nagłówków
+\item \verb!BODY! - opcjonalne ciało żądania
+\end{itemize}
+
+\end{itemize}\mbox{}
+
+\noindent \underline{Dozwolone nagłówki HTTP}: \\
+
+\begin{itemize} 
+\item \href{https://tools.ietf.org/html/rfc2616#section-4.5}{\textbf{\textit{General Header Fields}}} -  are a few header fields which have general applicability for
+   both request and response messages, but which do not apply to the
+   entity being transferred.
+
+\item \href{https://tools.ietf.org/html/rfc2616#section-7.1}{\textbf{\textit{Entity Header Fields}}} -   define metainformation about the entity-body or, if no body is present, about the resource identified by the request.
+
+\item \href{https://tools.ietf.org/html/rfc2616#section-5.3}{\textbf{\textit{Request Header Fields}}} - allow the client to pass additional   information about the request, and about the client itself, to the server.
+
+\item \href{https://tools.ietf.org/html/rfc2616#section-6.2}{\textbf{\textit{Response Header Fields}}} -  allow the server to pass additional
+   information about the response which cannot be placed in the Status-
+   Line. These header fields give information about the server and about
+   further access to the resource identified by the Request-URI.
+
+\end{itemize}\mbox{}
+
+
+%\noindent \underline{Dozwolone nagłówki żądań HTTP} dostępne są pod adresem: \url{https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html#sec5.3}. \\
+
+\newpage 
+\noindent \underline{Przykłady żądań i odpowiedzi HTTP}: \\
+
+\begin{itemize}\renewcommand{\labelitemii}{\scriptsize}
+\item Żądanie:
+
+\begin{code}
+GET /index.html HTTP/1.1
+HOST: 212.182.24.27
+
+
+\end{code}
+
+\item Odpowiedź:
+
+\begin{code}
+HTTP/1.1 200 OK
+Date: Thu, 13 Apr 2017 14:25:38 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Last-Modified: Thu, 13 Apr 2017 13:57:13 GMT
+ETag: "2c39-54d0cb3af4405"
+Accept-Ranges: bytes
+Content-Length: 11321
+Vary: Accept-Encoding
+Content-Type: text/html
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Apache2 Ubuntu Default Page: It works</title>
+  </head>
+  <body>
+   ...
+  </body>
+</html>
+
+\end{code}
+
+\newpage 
+\item Żądanie:
+
+\begin{code}
+TRACE / HTTP/1.1
+HOST: 212.182.24.27
+
+\end{code}
+
+\item Odpowiedź:
+
+\begin{code}
+HTTP/1.1 405 Method Not Allowed
+Date: Thu, 13 Apr 2017 14:31:22 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Allow: 
+Content-Length: 302
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>405 Method Not Allowed</title>
+</head><body>
+<h1>Method Not Allowed</h1>
+<p>The requested method TRACE is not allowed for the URL /.</p>
+<hr>
+<address>Apache/2.4.18 (Ubuntu) Server at 212.182.24.27 Port 80</address>
+</body></html>
+\end{code}
+
+\item Żądanie:
+
+\begin{code}
+OPTIONS /index.html HTTP/1.1
+HOST: 212.182.24.27
+
+\end{code}
+
+\item Odpowiedź:
+
+\begin{code}
+HTTP/1.1 200 OK
+Date: Thu, 13 Apr 2017 14:52:31 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Allow: OPTIONS,GET,HEAD,POST
+Content-Length: 0
+Content-Type: text/html
+\end{code}
+
+\item Żądanie:
+
+\begin{code}
+HEAD /index.html HTTP/1.1
+HOST: 212.182.24.27
+
+\end{code}
+
+\item Odpowiedź:
+
+\begin{code}
+HTTP/1.1 200 OK
+Date: Thu, 13 Apr 2017 14:53:06 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Last-Modified: Thu, 13 Apr 2017 13:57:13 GMT
+ETag: "2c39-54d0cb3af4405"
+Accept-Ranges: bytes
+Content-Length: 11321
+Vary: Accept-Encoding
+Content-Type: text/html
+\end{code}
+
+\end{itemize}
+

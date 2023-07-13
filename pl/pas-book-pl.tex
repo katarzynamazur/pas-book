@@ -69,9 +69,7 @@
 
 \tableofcontents
 
-\newpage
 
-\input{python.tex}
 
 \newpage 
 \section{Zadania wprowadzające}
@@ -174,6 +172,10 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
 \newpage
 \section{Gniazda klienckie}
 
+%\newpage
+
+\input{python-cli-socket.tex}
+
 \subsection*{Gniazda TCP}
 
 \begin{enumerate}[label=\textbf{3.\arabic*}]\setlength{\itemsep}{1em}
@@ -200,16 +202,33 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
     \item  \label{ex311} Napisz program klienta (prosty skaner portów sieciowych), który dla danego serwera przy użyciu protokołu TCP będzie sprawdzał, jakie porty są otwarte, a jakie zamknięte. Oprócz informacji o otwartych / zamkniętych portach, program powinien również wyświetlać informację o tym, jaka usługa jest uruchomiona na danym porcie (baner usługi).  Adres IPv4 serwera pobierz jako argument linii poleceń. Program powinien akceptować adres w postaci adresu IPv4 jak i hostname.  Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.  
     
     \item Zmodyfikuj program z zadania \ref{ex311} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
-    
+
+
+
+% #####################################################################################################################################################
+
     \item \label{ex313} Napisz program klienta, który połączy się z serwerem TCP działającym pod podanym adresem IPv4 na podanym porcie, a następnie wyśle do niego wiadomość i odbierze odpowiedź. Warunkiem zadania jest, aby klient wysłał i odebrał od serwera wiadomość o maksymalnej długości 20 znaków. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.  Uwzględnij sytuacje, gdy:
     \begin{itemize}
     \item wiadomość do wysłania jest za krótka - ma być wówczas uzupełniania do 20 znaków znakami spacji
     \item wiadomość do wysłania jest za długa - ma być przycięta do 20 znaków (lub wysłana w całości - sprawdź, co się wówczas stanie)
     \end{itemize}
     
-    \item Zmodyfikuj program z zadania \ref{ex313} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
+% #####################################################################################################################################################    
     
-    \item \label{ex315} Dostępne dla gniazd funkcje \texttt{recv} i \texttt{send} nie gwarantują wysłania / odbioru wszystkich danych. Rozważmy funkcję \texttt{recv}. Przykładowo, $100$ bajtów może zostać wysłane jako grupa po $10$ bajtów, albo od razu w całości. Oznacza to, iż jeśli używamy gniazd TCP, musimy odbierać dane, dopóki nie mamy pewności, że odebraliśmy odpowiednią ich ilość. Napisz program klienta, który połączy się z serwerem TCP działającym pod podanym adresem IPv4 na podanym porcie, a następnie wyśle do niego wiadomość i odbierze odpowiedź. Dane odbieraj / wysyłaj w ten sposób, aby mieć pewność, że klient w rzeczywistości odebrał / wysłał wiadomość o wymaganej długości. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
+    \item Zmodyfikuj program z zadania \ref{ex313} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
+% #####################################################################################################################################################
+    
+\item \label{ex315}  W implementacji gniazd, funkcje wysyłania i odbierania danych (np. funkcje \texttt{recv} i \texttt{send} w Pythonie) nie gwarantują wysłania / odbioru wszystkich danych. Rozważmy funkcję \texttt{recv}. Przykładowo, \texttt{100} bajtów może zostać wysłane jako grupa po \texttt{10} bajtów, albo od razu w całości. Oznacza to, iż jeśli używamy gniazd TCP, musimy odbierać dane, dopóki nie mamy pewności, że odebraliśmy odpowiednią ich ilość.
+
+Napisz program klienta, który połączy się z serwerem TCP działającym pod podanym adresem IPv4 na podanym porcie, a następnie wyśle do niego wiadomość i odbierze odpowiedź. Dane odbieraj / wysyłaj w ten sposób, aby mieć pewność, że klient w rzeczywistości odebrał / wysłał wiadomość o wymaganej długości. Prawidłowa komunikacja powinna odbywać się w nastepujacy sposób:
+
+\begin{itemize}
+\item Klient wysyła dane do serwera
+\item Serwer odsyła klientowi odebrane od niego dane (identyczną wiadomość) 
+\end{itemize}
+
+\noindent \textbf{Aby ułatwić sobie zadanie wysyłania i odbierania CAŁEJ wiadomości, możesz każdą z wysłanych / odebranych wiadomości kończyć znakiem nowej linii - \texttt{\textbackslash n}}. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Numer portu TCP, na którym ma działać serwer, pobierz z linii poleceń. Zadbaj o prawidłową obsługę błędów. 
+% #####################################################################################################################################################
     
     \item Zmodyfikuj program z zadania \ref{ex315} w taki sposób,  aby łączył się z serwerem posiadającym adres IPv6. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
    
@@ -244,8 +263,122 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
 \newpage
 \section{Gniazda serwerowe}
 
+\input{python-serv-socket.tex}
+\newpage
+
+\noindent \textbf{\underline{Uwaga:}} W poniższych zadaniach zakładamy, iż serwer powinien obsługiwać tylko jednego klienta w danej chwili.
+
 \subsection*{Gniazda TCP}
+
+\begin{enumerate}[label=\textbf{4.\arabic*}]\setlength{\itemsep}{1em}
+
+\item \label{ex41} Napisz program serwera, który działając pod adresem IPv4 oraz na podanym porcie TCP, dla podłączającego się klienta, będzie odsyłał mu aktualny czas oraz datę. Prawidłowa komunikacja powinna odbywać się w nastepujacy sposób: 
+
+\begin{itemize}
+\item Serwer odbiera od klienta wiadomość (dowolną)
+\item Serwer odsyła klientowi aktualną datę i czas
+\end{itemize}
+
+\noindent Po zakończeniu obsługi klienta, serwer powinien nieprzerwanie oczekiwać na kolejnych klientów, których będzie mógł obsłużyć. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Numer portu TCP, na którym ma działać serwer, pobierz z linii poleceń. Zadbaj o prawidłową obsługę błędów. 
+
+% ############################################################################################################
+\item Zmodyfikuj program z zadania \ref{ex41} w taki sposób,  aby serwer działał pod adresem IPv6. Po zakończeniu obsługi klienta, serwer powinien nieprzerwanie oczekiwać na kolejnych klientów, których będzie mógł obsłużyć. Numer portu TCP pobierz jako argument linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
+% ############################################################################################################
+
+\item \label{ex42} Napisz program serwera, który działając  pod adresem IPv4 oraz na podanym porcie TCP, dla podłączającego się klienta, będzie odsyłał mu przesłaną wiadomość (tzw. serwer echa). Prawidłowa komunikacja powinna odbywać się w nastepujacy sposób:
+
+\begin{itemize}
+\item Serwer odbiera dane od klienta
+\item Serwer odsyła klientowi odebrane od niego dane (identyczną wiadomość) 
+\end{itemize}
+
+\noindent Po zakończeniu obsługi klienta, serwer powinien nieprzerwanie oczekiwać na kolejnych klientów, których będzie mógł obsłużyć. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Numer portu TCP, na którym ma działać serwer, pobierz z linii poleceń. Zadbaj o prawidłową obsługę błędów. 
+% ############################################################################################################
+
+\item Zmodyfikuj program z zadania \ref{ex42} w taki sposób,  aby serwer działał pod adresem IPv6. Po zakończeniu obsługi klienta, serwer powinien nieprzerwanie oczekiwać na kolejnych klientów, których będzie mógł obsłużyć. Numer portu TCP pobierz jako argument linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
+% ############################################################################################################
+
+\item \label{ex45} Napisz program serwera, który działając  pod adresem IPv4 oraz na podanym porcie TCP, będzie losował liczbę i odbierał od klienta wiadomości. W przypadku, gdy w wiadomości klient przyśle do serwera coś innego, niż liczbę, serwer powinien poinformować klienta o błędzie. Po odebraniu liczby od klienta, serwer sprawdza, czy otrzymana liczba jest:
+
+\begin{itemize}
+\item mniejsza od wylosowanej przez serwer
+\item równa wylosowanej przez serwer
+\item większa od wylosowanej przez serwer
+\end{itemize} 
+
+\noindent A następnie odsyła stosowną informację do klienta. W przypadku, gdy klient odgadnie liczbę, serwer powinien zakończyć działanie.   Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Numer portu TCP, na którym ma działać serwer, pobierz z linii poleceń. Zadbaj o prawidłową obsługę błędów. 
+
+% ############################################################################################################
+\item Zmodyfikuj program z zadania \ref{ex45} w taki sposób,  aby serwer działał pod adresem IPv6.   Numer portu TCP pobierz jako argument linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+% ############################################################################################################
+
+\item \label{ex47} Napisz program serwera, który działając  pod adresem IPv4 oraz na podanym porcie TCP, będzie odsyłał klientowi jego wiadomość (o maksymalnej długości 20 znaków) (tzw. serwer echa).  Uwzględnij sytuacje, gdy:
+
+\begin{itemize}
+\item wiadomość do wysłania jest za krótka - ma być wówczas uzupełniania do 20 znaków znakami spacji
+\item wiadomość do wysłania jest za długa - ma być przycięta do 20 znaków (lub wysłana w całości - sprawdź, co się wówczas stanie)
+\end{itemize}
+
+\noindent Numer portu TCP pobierz jako argument linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+% ############################################################################################################
+\item Zmodyfikuj program z zadania \ref{ex47} w taki sposób,  aby serwer działał pod adresem IPv6.   Numer portu TCP pobierz jako argument linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+% ############################################################################################################
+
+\item  \label{ex49} W implementacji gniazd, funkcje wysyłania i odbierania danych (np. funkcje \texttt{recv} i \texttt{send} w Pythonie) nie gwarantują wysłania / odbioru wszystkich danych. Rozważmy funkcję \texttt{recv}. Przykładowo, \texttt{100} bajtów może zostać wysłane jako grupa po \texttt{10} bajtów, albo od razu w całości. Oznacza to, iż jeśli używamy gniazd TCP, musimy odbierać dane, dopóki nie mamy pewności, że odebraliśmy odpowiednią ich ilość.
+
+Napisz program serwera, który działając  pod adresem IPv4 oraz na podanym porcie TCP, dla podłączającego się klienta, będzie odsyłał mu przesłaną wiadomość (tzw. serwer echa). Prawidłowa komunikacja powinna odbywać się w nastepujacy sposób:
+
+\begin{itemize}
+\item Serwer odbiera dane od klienta
+\item Serwer odsyła klientowi odebrane od niego dane (identyczną wiadomość) 
+\end{itemize}
+
+\noindent \textbf{Aby ułatwić sobie zadanie wysyłania i odbierania CAŁEJ wiadomości, możesz każdą z wysłanych / odebranych wiadomości kończyć znakiem nowej linii - \texttt{\textbackslash n}}. Po zakończeniu obsługi klienta, serwer powinien nieprzerwanie oczekiwać na kolejnych klientów, których będzie mógł obsłużyć. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Numer portu TCP, na którym ma działać serwer, pobierz z linii poleceń. Zadbaj o prawidłową obsługę błędów. 
+
+% ############################################################################################################
+\item Zmodyfikuj program z zadania \ref{ex49} w taki sposób,  aby serwer działał pod adresem IPv6.   Numer portu TCP pobierz jako argument linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+% ############################################################################################################
+\end{enumerate}
+
 \subsection*{Gniazda UDP}
+
+\begin{enumerate}[label=\textbf{4.\arabic*}, resume]\setlength{\itemsep}{1em}
+
+\item  \label{ex411} Napisz program serwera, który działając  pod adresem IPv4 oraz na podanym porcie UDP, dla podłączającego się klienta, będzie odsyłał mu przesłaną wiadomość (tzw. serwer echa). Prawidłowa komunikacja powinna odbywać się w nastepujacy sposób:
+
+\begin{itemize}
+\item Serwer odbiera dane od klienta
+\item Serwer odsyła klientowi odebrane od niego dane (identyczną wiadomość) 
+\end{itemize}
+
+\noindent Po zakończeniu obsługi klienta, serwer powinien nieprzerwanie oczekiwać na kolejnych klientów, których będzie mógł obsłużyć. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Numer portu UDP, na którym ma działać serwer, pobierz z linii poleceń. Zadbaj o prawidłową obsługę błędów. 
+% ############################################################################################################
+\item Zmodyfikuj program z zadania \ref{ex411} w taki sposób,  aby serwer działał pod adresem IPv6.   Numer portu UDP pobierz jako argument linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+% ############################################################################################################
+\item \label{ex413} Napisz program serwera, który działając  pod adresem IPv4 oraz na podanym porcie UDP, dla podłączającego się klienta, będzie odbierał od niego liczbę, operator i liczbę, a następnie odsyłał klientowi wynik działania przez niego przesłanego. Komunikacja powinna wyglądać w następujący sposób:
+
+\begin{itemize}
+\item Klient łączy się do serwera
+\item Klient przesyła do serwera pierwszą liczbę
+\item Serwer odsyła klientowi tekst \texttt{OK}
+\item Klient wysyła znak działania do serwera (dla uproszczenia, dozwolone są jedynie operacje \texttt{+} \texttt{-} \texttt{*} \texttt{/})
+\item Serwer odsyła klientowi tekst \texttt{OK}
+\item Klient przesyła do serwera drugą liczbę
+\item Serwer odsyła klientowi wynik działania
+\end{itemize}
+
+\noindent Po zakończeniu obsługi klienta, serwer powinien nieprzerwanie oczekiwać na kolejnych klientów, których będzie mógł obsłużyć. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Numer portu UDP, na którym ma działać serwer, pobierz z linii poleceń. Zadbaj o prawidłową obsługę błędów. 
+% ############################################################################################################
+\item  Zmodyfikuj program z zadania \ref{ex413} w taki sposób,  aby serwer działał pod adresem IPv6.   Numer portu UDP pobierz jako argument linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+% ############################################################################################################
+
+
+\end{enumerate}
+
 
 \newpage
 \section{Bezpiecznie gniazda}
@@ -290,9 +423,12 @@ ed 74 0b 55 00 24 ef fd 70 72 6f 67 72 61
 \subsection*{Protokół IMAP}
 
 \newpage 
-\section{Protokół HTTP}
+\section{Protokół HTTP (w wersji 1.1)}
 
-\subsection*{Protokół HTTP w wersji 1.1}
+%\subsection*{Protokół HTTP }
+
+\input{ch7_http.tex}
+\newpage
 
 \begin{enumerate}[label=\textbf{7.\arabic*}]\setlength{\itemsep}{1em}
 
@@ -445,6 +581,7 @@ z serwerem, a następnie pobierze z serwera obrazek w 3 częściach i po odebran
 % ################################################################################################################# 
 
 % https://www.sidechannel.blog/en/http-method-override-what-it-is-and-how-a-pentester-can-use-it/
+=======
 
 \end{enumerate}
 
