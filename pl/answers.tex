@@ -535,7 +535,7 @@ docker pull mazurkatarzyna/pas-book-p1-ch7-ex1:latest
 docker run -dp 7001:80 mazurkatarzyna/pas-book-p1-ch7-ex1
 \end{verbatim}
 
-\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7001/html}
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7001/html} i podejrzyj, jak wygląda żądanie i odpowiedź HTTP.
 
 % #################################################################################################################
 \item Serwer możesz uruchomić za pomocą poniższych poleceń:
@@ -545,11 +545,9 @@ docker pull mazurkatarzyna/pas-book-p1-ch7-ex2:latest
 docker run -dp 7002:80 mazurkatarzyna/pas-book-p1-ch7-ex2
 \end{verbatim}
 
-\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7002/image/png}
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7002/image/png} i podejrzyj, jak wygląda żądanie i odpowiedź HTTP.
 
 % #################################################################################################################
-<<<<<<< HEAD
-=======
 \item Serwer możesz uruchomić za pomocą poniższych poleceń:
 
 \begin{verbatim}
@@ -557,7 +555,7 @@ docker pull mazurkatarzyna/pas-book-p1-ch7-ex3:latest
 docker run -dp 7003:80 mazurkatarzyna/pas-book-p1-ch7-ex3
 \end{verbatim}
 
-\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7003/image.jpg}
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7003/image.jpg} i podejrzyj, jak wygląda żądanie i odpowiedź HTTP.
 
 % #################################################################################################################
 \item Serwer możesz uruchomić za pomocą poniższych poleceń:
@@ -567,7 +565,7 @@ docker pull mazurkatarzyna/pas-book-p1-ch7-ex4:latest
 docker run -dp 7004:80 mazurkatarzyna/pas-book-p1-ch7-ex4
 \end{verbatim}
 
-\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7004/post}
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7004/post} i podejrzyj, jak wygląda żądanie i odpowiedź HTTP.
 % #################################################################################################################
 \item Serwer możesz uruchomić za pomocą poniższych poleceń:
 
@@ -582,6 +580,113 @@ docker run -dp 7005:80 mazurkatarzyna/pas-book-p1-ch7-ex5
 
 \item 
 
+\item \addtocounter{enumi}{3} Serwer możesz uruchomić za pomocą poniższych poleceń:
+
+\begin{verbatim}
+docker pull mazurkatarzyna/pas-book-p1-ch7-ex3:latest
+docker run -dp 7003:80 mazurkatarzyna/pas-book-p1-ch7-ex3
+\end{verbatim}
+
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7003/image.jpg} i podejrzyj, jak wygląda żądanie i odpowiedź HTTP.
+% #################################################################################################################
+\item Serwer możesz uruchomić za pomocą poniższych poleceń:
+
+\begin{verbatim}
+docker pull mazurkatarzyna/pas-book-p1-ch7-ex11:latest
+docker run -dp 70011:7011 mazurkatarzyna/pas-book-p1-ch7-ex11
+\end{verbatim}
+
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7011/?key=value} i podejrzyj, jak wygląda żądanie i odpowiedź HTTP.
+% #################################################################################################################
+\item Sprawdź manual narzędzia \texttt{cURL}: \texttt{man curl}.
+% #################################################################################################################
+\item Serwer możesz uruchomić za pomocą poniższych poleceń:
+
+\begin{verbatim}
+docker pull mazurkatarzyna/pas-book-p1-ch7-ex13:latest
+docker run -dp 70013:7013 mazurkatarzyna/pas-book-p1-ch7-ex13
+\end{verbatim}
+
+\noindent Gdy serwer jest uruchomiony, spróbuj na początku wysłać do niego request za pomocą narzędzia \texttt{cURL}. 
+% #################################################################################################################
+\item Sprawdź manual narzędzia \texttt{cURL}: \texttt{man curl}.
+% #################################################################################################################
+\item Serwer możesz uruchomić za pomocą poniższych poleceń:
+
+\begin{verbatim}
+docker pull mazurkatarzyna/pas-book-p1-ch7-ex11:latest
+docker run -dp 70011:7011 mazurkatarzyna/pas-book-p1-ch7-ex11
+\end{verbatim}
+
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7011} i podejrzyj, jak wygląda żądanie i odpowiedź HTTP.
+% #################################################################################################################
+\item Sprawdź manual narzędzia \texttt{cURL}: \texttt{man curl}.
+% #################################################################################################################
+\item Serwer możesz uruchomić za pomocą poniższych poleceń:
+
+\begin{verbatim}
+docker pull mazurkatarzyna/pas-book-p1-ch7-ex11:latest
+docker run -dp 70011:7011 mazurkatarzyna/pas-book-p1-ch7-ex11
+\end{verbatim}
+
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7011} i podejrzyj, jak wygląda żądanie i odpowiedź HTTP. \\
+
+ \noindent Przy rozwiązaniu zadania pomocna może być również wiedza o  \href{https://www.w3schools.com/tags/ref_urlencode.ASP}{kodowaniu URL}.  Przeglądarki internetowe żądają stron z serwerów sieciowych za pomocą adresu URL. Adres URL to adres strony internetowej, na przykład: \texttt{https://www.umcs.pl}. Kodowanie adresów URL (URL Encoding lub Percent Encoding) konwertuje znaki na format, który można przesyłać przez Internet. Adresy URL można przesyłać przez Internet tylko przy użyciu zestawu znaków ASCII. Ponieważ adresy URL często zawierają znaki spoza zestawu ASCII, adres URL musi zostać przekonwertowany na prawidłowy format ASCII. Kodowanie adresu URL zastępuje niebezpieczne znaki ASCII znakiem \texttt{\%}, po którym następują dwie cyfry szesnastkowe. Adresy URL nie mogą zawierać spacji. Kodowanie adresów URL zwykle zastępuje spację znakiem plus \texttt{+} lub \texttt{\%20}. Aby sprawdzić,  w jaki sposób w zapisie szesnastkowym można zakodować znak \texttt{\&}, możesz użyć narzędzia \texttt{ascii}. Wydaj polecenie \texttt{man ascii} aby sprawdzić manual narzędzia.
+% #################################################################################################################
+\item  Sprawdź manual narzędzia \texttt{cURL}: \texttt{man curl}. Pomocne będzie również użycie narzędzia \texttt{ascii}. Wydaj polecenie \texttt{man ascii} aby sprawdzić manual narzędzia.
+% #################################################################################################################
+\item Serwer możesz uruchomić za pomocą poniższych poleceń:
+
+\begin{verbatim}
+docker pull mazurkatarzyna/pas-book-p1-ch7-ex19:latest
+docker run -dp 70019:7019 mazurkatarzyna/pas-book-p1-ch7-ex19
+\end{verbatim}
+
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7019} i podejrzyj, jak wygląda żądanie i odpowiedź HTTP. Aby sprawdzić,  w jaki sposób w zapisie szesnastkowym można zakodować znak \texttt{?}, możesz użyć narzędzia \texttt{ascii}. Wydaj polecenie \texttt{man ascii} aby sprawdzić manual narzędzia.
+% #################################################################################################################
+\item Sprawdź manual narzędzia \texttt{cURL}: \texttt{man curl}. Pomocne będzie również użycie narzędzia \texttt{ascii}. Wydaj polecenie \texttt{man ascii} aby sprawdzić manual narzędzia.
+% #################################################################################################################
+\item Serwer możesz uruchomić za pomocą poniższych poleceń:
+
+\begin{verbatim}
+docker pull mazurkatarzyna/pas-book-p1-ch7-ex11:latest
+docker run -dp 7011:7011 mazurkatarzyna/pas-book-p1-ch7-ex11
+\end{verbatim}
+
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7011} i podejrzyj, jak wygląda żądanie i odpowiedź HTTP. Aby sprawdzić,  w jaki sposób w zapisie szesnastkowym można zakodować znak spacji, możesz użyć narzędzia \texttt{ascii}. Wydaj polecenie \texttt{man ascii} aby sprawdzić manual narzędzia.
+% #################################################################################################################
+\item Sprawdź manual narzędzia \texttt{cURL}: \texttt{man curl}. Pomocne będzie również użycie narzędzia \texttt{ascii}. Wydaj polecenie \texttt{man ascii} aby sprawdzić manual narzędzia.
+% #################################################################################################################
+
+\item Serwer możesz uruchomić za pomocą poniższych poleceń:
+
+\begin{verbatim}
+docker pull mazurkatarzyna/pas-book-p1-ch7-ex11:latest
+docker run -dp 7011:7011 mazurkatarzyna/pas-book-p1-ch7-ex11
+\end{verbatim}
+
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7011} i podejrzyj, jak wygląda żądanie i odpowiedź HTTP. Aby sprawdzić,  w jaki sposób w zapisie szesnastkowym można zakodować znak \texttt{\#}, możesz użyć narzędzia \texttt{ascii}. Wydaj polecenie \texttt{man ascii} aby sprawdzić manual narzędzia.
+% #################################################################################################################
+\item Sprawdź manual narzędzia \texttt{cURL}: \texttt{man curl}. Pomocne będzie również użycie narzędzia \texttt{ascii}. Wydaj polecenie \texttt{man ascii} aby sprawdzić manual narzędzia.
+% #################################################################################################################
+\item  Serwer możesz uruchomić za pomocą poniższych poleceń:
+
+\begin{verbatim}
+docker pull mazurkatarzyna/pas-book-p1-ch7-ex25:latest
+docker run -dp 7025:7025 mazurkatarzyna/pas-book-p1-ch7-ex25
+\end{verbatim}
+
+\noindent Działanie serwera możesz przetestować za pomocą przeglądarki. W swojej przeglądarce otwórz stronę: \url{http://127.0.0.1:7025} i podejrzyj, jak wygląda żądanie i odpowiedź HTTP. Możesz użyć również narzędzia \texttt{ascii}. Wydaj polecenie \texttt{man ascii} aby sprawdzić manual narzędzia. \textit{Podpowiedź: Aby wysłać parametr jako tablicę, możesz użyć następującej składni:} \texttt{key[0]=value1\&key[1]=value2}.
+
+% #################################################################################################################
+\item Sprawdź manual narzędzia \texttt{cURL}: \texttt{man curl}. Aby wysłać parametr jako tablicę, możesz użyć następującej składni:  \texttt{key[0]=value1\&key[1]=value2}.
+% #################################################################################################################
+\item Sprawdź manual narzędzia \texttt{cURL}: \texttt{man curl}. Aby wysłać parametr jako tablicę, możesz użyć następującej składni:  \texttt{key[0]=value1\&key[1]=value2}. Aby sprawdzić,  w jaki sposób w zapisie szesnastkowym można zakodować znaki \texttt{[} oraz \texttt{]}, możesz użyć narzędzia \texttt{ascii}. Wydaj polecenie \texttt{man ascii} aby sprawdzić manual narzędzia.
+% #################################################################################################################
+ 
 
 
 \end{enumerate}
+
+%\begin{enumerate}[label=\textbf{7.\arabic*}]\setlength{\itemsep}{1em}
+%\end{enumerate}

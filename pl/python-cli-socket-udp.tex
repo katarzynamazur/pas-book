@@ -1,0 +1,68 @@
+\subsubsection*{Gniazda w języku Python - moduł socket} \mbox{}\\
+
+
+\noindent \textbf{Tworzenie gniazd klienckich/serwerowych UDP, IPv4}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket 
+
+if __name__ == '__main__':
+	sockIPv4 = socket.socket(socket.AF_INET,  socket.SOCK_DGRAM)
+	sockIPv4.close()
+\end{code} 
+
+\noindent \textbf{Tworzenie gniazd klienckich/serwerowych UDP, IPv6}
+
+\begin{code}
+#!/usr/bin/env python3
+import socket 
+
+if __name__ == '__main__':
+	sockIPv6 = socket.socket(socket.AF_INET6,  socket.SOCK_DGRAM)
+	sockIPv6.close()
+\end{code} 
+
+
+\noindent \textbf{Gniazdo klienckie UDP, IPv4: komunikacja z serwerem (wysyłanie i odbieranie danych)}
+
+\begin{code}
+#!/usr/bin/env python3
+
+import socket
+
+HOST = '127.0.0.1'
+PORT = 80
+
+sockIPv4 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+server_address = (HOST, PORT)
+
+try:
+    message = "Hello Server!"
+    sent = sockIPv4.sendto(message.encode(), server_address)		# wysylanie
+    data, server = sockIPv4.recvfrom(4096)																				# odbieranie
+    print(f"Received: {data.decode()}")
+finally:
+    sockIPv4.close()
+\end{code} 
+ 
+\noindent \textbf{Gniazdo klienckie UDP, IPv6: komunikacja z serwerem (wysyłanie i odbieranie danych)}
+
+\begin{code}
+#!/usr/bin/env python3
+
+import socket
+
+HOST = "::1"
+PORT = 80
+
+sockIPv6 = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
+
+try:
+    sockIPv6.sendto("Hello Server!".encode(), (HOST, PORT))			# wysylanie
+    data, server = sockIPv6.recvfrom(4096)																				# odbieranie
+    print(f"Received: {data.decode()}")
+finally:
+    sockIPv6.close()
+\end{code}
+
