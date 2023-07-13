@@ -357,8 +357,94 @@ z serwerem, a następnie pobierze z serwera obrazek w 3 częściach i po odebran
 % #################################################################################################################
 
 \item  Zmodyfikuj program z zadania \ref{ex78} w taki sposób, aby serwer wykorzystywał adres IPv6.  Numer portu pobierz jako argument  linii poleceń. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. 
-    
+% #################################################################################################################    
 
+\item Poniżej znajduje się request protokołu HTTP/1.1 w zapisie szesnastkowym. Wiedząc, że znak \texttt{\textbackslash r} w zapisie szesnastkowym to \texttt{0x0d}, natomiast \texttt{\textbackslash n} to \texttt{0x0a} oraz wiedząc, że w zapisie szesnastkowym jedna cyfra reprezentuje $4$ bity, napisz program, w którym sprawdzisz, jakie nagłówki zostały wysłane do serwera.
+
+\begin{figure}[h!t!p!]
+\centering
+\begin{BVerbatim}
+47 45 54 20 2f 20 48 54  54 50 2f 31 2e 31 0d 0a   
+20 48 6f 73 74 3a 20 77  77 77 2e 75 6d 63 73 2e   
+70 6c 20 0d 0a 20 55 73  65 72 2d 41 67 65 6e 74   
+3a 20 63 75 72 6c 2f 37  2e 38 31 2e 30 20 0d 0a  
+20 41 63 63 65 70 74 3a  20 2a 2f 2a 20 0d 0a 0d   
+0a
+\end{BVerbatim}
+\end{figure}
+% #################################################################################################################    
+
+% curl -X GET htts://umcs.pl 
+% echo -ne "GET / HTTP/1.1\r\n Host: www.umcs.pl \r\n User-Agent: curl/7.81.0 \r\n Accept: */* \r\n\r\n" | hexdump -C
+
+% \item Wiedząc, że serwer na żądanie typu GET zwraca parametry żądania, wyślij do niego request, na który serwer odpowie odsyłając jedynie parametry wysłanego żądanie. Zadanie możesz rozwiązać za pomocą \texttt{curla} lub skryptu w Pythonie. 
+
+
+\item \label{ex711} Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex11:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7011} działa serwer obsługujący protokół HTTP w wersji 1.1. Serwer w odpowiedzi na żądanie typu \texttt{GET} zwraca parametry żądania. Napisz program klienta, który połączy się z serwerem, a następnie wyśle do serwera żądanie \texttt{GET} z parametrem \texttt{key}, który dostaje wartość \texttt{value}, odbierze i wyświetli odpowiedź.  Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+% Działanie serwera możesz przetesotwać otwierając w przeglądarce strone: \url{http://127.0.0.1:7011/?key=value}
+% #################################################################################################################    
+
+\item Spróbuj rozwiązać zadanie \ref{ex711} za pomocą narzędzia \texttt{curl}. 
+% curl -GET "http://127.0.0.1:8080?key=value"
+% curl -GET "http://127.0.0.1:8080" -d "key=please"
+
+% nc 127.0.0.1 8080
+% GET /?key=value HTTP/1.1
+% Host: 127.0.0.1
+
+% #################################################################################################################    
+
+\item \label{ex713}  Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex13:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7013} działa serwer obsługujący protokół HTTP w wersji 1.1. Serwer w odpowiedzi na odebrany request, odsyła do klienta przesłane przez niego ciasteczko (\texttt{cookie header}). W przypadku, gdy klient nie prześle ciasteczka, serwer zwraca odpowiedź z kodem \texttt{404}. Napisz program klienta, który połączy się z serwerem, a następnie wyśle do serwera ciasteczko z kluczem \texttt{key} oraz wartością \texttt{value}, a następnie odbierze i wyświetli odpowiedź.  Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.
+
+% GET / HTTP/1.1
+% Host: 127.0.0.1
+% cookie: key=value
+% #################################################################################################################    
+\item Spróbuj rozwiązać zadanie \ref{ex713} za pomocą narzędzia \texttt{curl}.  
+% curl -GET "http://127.0.0.1:8080" --cookie "key=please"
+
+% #################################################################################################################    
+\item \label{ex715} Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex11:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7011} działa serwer obsługujący protokół HTTP w wersji 1.1. Serwer w odpowiedzi na żądanie typu \texttt{GET} zwraca parametry żądania. Napisz program klienta, który połączy się z serwerem, a następnie wyśle do serwera żądanie \texttt{GET} z parametrem \texttt{key}, który dostaje wartość \texttt{value}, odbierze i wyświetli odpowiedź. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. \textbf{Uwaga: wyślij do serwera 2 parametry \texttt{key} z wartością \texttt{value}.} 
+
+% curl -X GET "http://127.0.0.1?key=please&key=please"
+% curl -GET "http://ptl-6978b5c46e5c-993fe3572838.libcurl.me/pentesterlab?key=please&key=please"
+% #################################################################################################################    
+\item Spróbuj rozwiązać zadanie \ref{ex715} za pomocą narzędzia \texttt{curl}.  
+% ################################################################################################################# 
+\item \label{ex717} Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex11:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7011} działa serwer obsługujący protokół HTTP w wersji 1.1. Serwer w odpowiedzi na żądanie typu \texttt{GET} zwraca parametry żądania. Napisz program klienta, który połączy się z serwerem, a następnie wyśle do serwera żądanie \texttt{GET} z parametrem \texttt{key}, który dostaje wartość \texttt{value\&}, odbierze i wyświetli odpowiedź. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. \textbf{Uwaga: zwróć szczególną uwagę, czy serwer zwróci odpowiednią wartość parametru, czyli \texttt{value\&} zamiast \texttt{value}.} \
+
+% https://www.w3schools.com/tags/ref_urlencode.ASP
+
+% Przeglądarki internetowe żądają stron z serwerów sieciowych za pomocą adresu URL. Adres URL to adres strony internetowej, na przykład: https://www.umcs.pl . Kodowanie adresów URL (URL Encoding or Percent Encoding) konwertuje znaki na format, który można przesyłać przez Internet. Adresy URL można przesyłać przez Internet tylko przy użyciu zestawu znaków ASCII. Ponieważ adresy URL często zawierają znaki spoza zestawu ASCII, adres URL musi zostać przekonwertowany na prawidłowy format ASCII. Kodowanie adresu URL zastępuje niebezpieczne znaki ASCII znakiem \texttt{\%}, po którym następują dwie cyfry szesnastkowe. Adresy URL nie mogą zawierać spacji. Kodowanie adresów URL zwykle zastępuje spację znakiem plus \texttt{+} lub \texttt{\%20}.
+
+% Możesz skorzystać z narzędzia \texttt{ascii} (\texttt{man ascii}) dostępnego w systemie Linux. Sprawdź, w jaki sposób w zapisie szesnastkowym można zakodować znak \texttt{\&}.
+% ################################################################################################################# 
+\item Spróbuj rozwiązać zadanie \ref{ex717} za pomocą narzędzia \texttt{curl}.  
+% curl -GET "http://127.0.0.1:8080?key=please%26"
+% ################################################################################################################# 
+\item \label{ex719} Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex19:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7019} działa serwer obsługujący protokół HTTP w wersji 1.1. Serwer w odpowiedzi na żądanie typu \texttt{GET} zwraca parametry żądania. Napisz program klienta, który połączy się z serwerem, a następnie wyśle do serwera żądanie \texttt{GET} z parametrem \texttt{?key}, który dostaje wartość \texttt{value}, odbierze i wyświetli odpowiedź. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. \textbf{Uwaga: zwróć szczególną uwagę, czy serwer zwróci odpowiedni parametr, czyli \texttt{?key}.} \
+% ################################################################################################################# 
+\item Spróbuj rozwiązać zadanie \ref{ex719} za pomocą narzędzia \texttt{curl}.  
+% ################################################################################################################# 
+\newpage 
+\item \label{ex721} Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex11:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7011} działa serwer obsługujący protokół HTTP w wersji 1.1. Serwer w odpowiedzi na żądanie typu \texttt{GET} zwraca parametry żądania. Napisz program klienta, który połączy się z serwerem, a następnie wyśle do serwera żądanie \texttt{GET} z parametrem \texttt{key}, który dostaje wartość \texttt{imie nazwisko}, odbierze i wyświetli odpowiedź. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. \textbf{Uwaga: zwróć szczególną uwagę, czy serwer zwróci odpowiednią wartość parametru \texttt{key}, czyli \texttt{imie nazwisko}.} \
+% data = "GET /?key=please%20me HTTP/1.1\r\nHost: 127.0.0.1\r\n\r\n"
+% ################################################################################################################# 
+\item Spróbuj rozwiązać zadanie \ref{ex721} za pomocą narzędzia \texttt{curl}.  
+% ################################################################################################################# 
+\item \label{ex723} Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex11:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7011} działa serwer obsługujący protokół HTTP w wersji 1.1. Serwer w odpowiedzi na żądanie typu \texttt{GET} zwraca parametry żądania. Napisz program klienta, który połączy się z serwerem, a następnie wyśle do serwera żądanie \texttt{GET} z parametrem \texttt{key}, który dostaje wartość \texttt{value\#}, odbierze i wyświetli odpowiedź. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów. \textbf{Uwaga: zwróć szczególną uwagę, czy serwer zwróci odpowiednią wartość parametru \texttt{key}, czyli \texttt{value\#}.} \
+% ################################################################################################################# 
+\item Spróbuj rozwiązać zadanie \ref{ex723} za pomocą narzędzia \texttt{curl}.  
+% ################################################################################################################# 
+\item \label{ex725} Korzystając z przygotowanego obrazu Dockerowego (\texttt{mazurkatarzyna/pas-book-p1-ch7-ex25:latest}), uruchom serwer HTTP.  Po uruchomieniu obrazu, pod adresem IPv4 \texttt{127.0.0.1} na porcie TCP o numerze \texttt{7025} działa serwer obsługujący protokół HTTP w wersji 1.1. Serwer w odpowiedzi na żądanie typu \texttt{GET} zwraca parametry żądania. Napisz program klienta, który połączy się z serwerem, a następnie wyśle do serwera żądanie \texttt{GET} z parametrem \texttt{key}, który jest tablicą, gdzie pierwszy element tablicy to \texttt{value1}, a drugi element tablicy to \texttt{value2}.  Następnie klient odbierze i wyświetli odpowiedź. Podczas pisania kodu związanego z operacjami sieciowymi, nie korzystaj z dodatkowych bibliotek, wykorzystaj jedynie gniazda. Zadbaj o prawidłową obsługę błędów.  
+%\textit{Podpowiedź: Aby wysłać parametr jako tablicę, możesz użyć następującej składni:} \texttt{key[0]=value1\&key[1]=value2}.
+% ################################################################################################################# 
+\item Spróbuj rozwiązać zadanie \ref{ex725} bez użycia znaków \texttt{[} oraz \texttt{]}.
+% ################################################################################################################# 
+\item Spróbuj rozwiązać zadanie \ref{ex725} za pomocą narzędzia \texttt{curl}.  
+% ################################################################################################################# 
+
+% https://www.sidechannel.blog/en/http-method-override-what-it-is-and-how-a-pentester-can-use-it/
 
 \end{enumerate}
 
